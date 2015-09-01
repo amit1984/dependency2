@@ -1,0 +1,45 @@
+﻿@model IEnumerable<dependency2.Models.officer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm("index", "officer", FormMethod.Get))
+{
+
+<table>
+    <tr>
+        <td>
+@Html.DisplayText("search what")</td>
+        <td><div class="editor-field">
+            @Html.TextBox("search") <input type="submit" value="Search" /></div></td>
+
+    </tr></table>
+}
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
